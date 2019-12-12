@@ -1,0 +1,2 @@
+#stiri v vrsto
+
