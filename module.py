@@ -6,7 +6,7 @@ class igra:
         self.zadnja_poteza = (0,0) #(visina, stolpec)
 
         if mreza is None: 
-            self.mreza = [['-','-','-','-','-','-', '-'] for _ in range(6)] #seznami aso narobe obrnjeni od vzgoraj navzdol je za igrt
+            self.mreza = [['-','-','-','-','-','-', '-'] for _ in range(6)] #seznami so narobe obrnjeni od vzgoraj navzdol je za igrt
         else: 
             self.mreza = mreza
 
@@ -15,25 +15,37 @@ class igra:
         sez_r_diagonala = []
         sez_p_diagonala = []
         sez_visina = []
-        for i in range(-3,4): #linija
-            try:
+        for i in range(-3,4):
+            if (6 > self.zadnja_poteza[0] + i >= 0) and (7 > self.zadnja_poteza[1] + i >= 0) :
                 sez_r_diagonala.append(self.mreza[self.zadnja_poteza[0] + i ][self.zadnja_poteza[1] + i ])
-            except: pass
-            try:
-                sez_p_diagonala.append(self.mreza[self.zadnja_poteza[0] - i ][self.zadnja_poteza[1] - i ])
-            except: pass
-            try:
+            else: pass
+            if (6 > self.zadnja_poteza[0] + i >= 0) and (7 > self.zadnja_poteza[1] - i >= 0) :
+                sez_p_diagonala.append(self.mreza[self.zadnja_poteza[0] + i ][self.zadnja_poteza[1] - i ])
+            else: pass
+            if (6 > self.zadnja_poteza[0] - i >= 0) and (7 > self.zadnja_poteza[1] + i >= 0) :
                 sez_visina.append(self.mreza[self.zadnja_poteza[0] - i ][self.zadnja_poteza[1]])
-            except: pass
+            else: pass
 
         return [sez_r_diagonala, sez_p_diagonala, sez_visina, self.mreza[self.zadnja_poteza[0]]]
 
+    def sez_str(self, sez):
+        '''Preveri, če je v sez določen string'''
+        for pod_sez in sez:
+            if len(pod_sez) <= 3:
+                pass
+            else: 
+                for i in range(len(pod_sez)):
+                    try:
+                        preveri = pod_sez[0 + i : 4 + i]
+                        if preveri[0] == preveri[1] == preveri[2] == preveri[3] != '-' :
+                            return True
+                        else: pass
+                    except IndexError: pass
+        return False
 
-    def stiri_v_vrsto(self): #Mogoče dodam zadnja poteza var,da je mnj za pregledovt, če je konc
-        #Try: Except IndexError
-        #dodatna spremenljivka seznam seznamov, v katerih preveri, če so notr 4 v vrsto
+    def stiri_v_vrsto(self): 
         '''Preveri, če so kje v mrezi 4 v vrsto'''
-        pass
+        return self.sez_str(self.stiri_linija_seznami())
 
     def naslednji(self):
         '''Pove kdo je naslednji na vrsti'''
@@ -53,7 +65,19 @@ class igra:
         self.navrsti = self.naslednji()
         return
 
-# igra = igra()
+
+igra = igra()
+for i in range(4):
+    igra.poteza(i)
+    igra.poteza(i)
+
+
+for i in igra.mreza:
+    print(i)
+print(igra.zadnja_poteza)
+# print(igra.navrsti)
+print(igra.stiri_linija_seznami())
+print(igra.sez_str(igra.stiri_linija_seznami()))
 # print(igra.navrsti)
 # print(igra.mreza)
 # print(igra.visina(0))
