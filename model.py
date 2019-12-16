@@ -66,18 +66,17 @@ class igra:
         return
 
 
-igra = igra()
-for i in range(4):
-    igra.poteza(i)
-    igra.poteza(i)
-
-
-for i in igra.mreza:
-    print(i)
-print(igra.zadnja_poteza)
+# igra = igra()
+# for i in range(4):
+#     igra.poteza(i)
+#     igra.poteza(i)
+ 
+# for i in igra.mreza:
+#     print(i)
+# print(igra.zadnja_poteza)
 # print(igra.navrsti)
-print(igra.stiri_linija_seznami())
-print(igra.sez_str(igra.stiri_linija_seznami()))
+# print(igra.stiri_linija_seznami())
+# print(igra.sez_str(igra.stiri_linija_seznami()))
 # print(igra.navrsti)
 # print(igra.mreza)
 # print(igra.visina(0))
