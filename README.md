@@ -1,2 +1,2 @@
-# Stiri_v_vrsto
+# Stiri v vrsto
 Igra stiriv vrsto. Vaja za Python.
