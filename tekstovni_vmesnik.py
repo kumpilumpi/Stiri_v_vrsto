@@ -18,8 +18,8 @@ def natisni_mreza(igra):
     return
 
 def kam():
-    '''Vpraša v katero mrežo bo igral'''
-    return input("V katero mrežo boste igrali: ")
+    '''Vpraša v kateri stolpec boste igrali'''
+    return input("V kateri stolpec boste igrali: ")
 
 def vmesnik():
     igra_1 = model.igra()
